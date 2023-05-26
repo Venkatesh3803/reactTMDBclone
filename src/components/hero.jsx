@@ -11,6 +11,7 @@ const Hero = () => {
     const id = (window.location.search.split("=")[1])
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
+
     let defaultId = 667538
 
     const [movie, setMovie] = useState("")
@@ -22,11 +23,11 @@ const Hero = () => {
     }
     useEffect(() => {
         fetchingMovies(`movie/${id ? id : defaultId}`)
-    }, [id])
+    }, [id,defaultId])
     return (
         <div className='hero'>
             <div className="hero-container">
-                {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" /> : <img src={noImage} alt="" />}
+                {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" /> : <img src={noImage} alt={movie.title} />}
                 <div className="hero-info">
                     <h2>{movie.title}</h2>
                     <p>{movie.overview}</p>
