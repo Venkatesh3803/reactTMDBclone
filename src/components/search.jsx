@@ -7,23 +7,21 @@ const SearchBar = () => {
     const searchTerm = (paramsKey.get("search-term"))
     const searchType = (paramsKey.get("type"))
 
-
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
 
     const [movies, setMovies] = useState("")
 
 
-    const fetchingMovies = async (endpoint) => {
-        const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}&query=${searchTerm}`)
-        const data = await res.json()
-        setMovies(data)
-    }
 
     useEffect(() => {
+        const fetchingMovies = async (endpoint) => {
+            const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}&query=${searchTerm}`)
+            const data = await res.json()
+            setMovies(data)
+        }
         fetchingMovies(`search/${searchType}`)
-    }, [searchType, searchTerm])
-    console.log(movies)
+    }, [searchType, searchTerm],)
 
 
     return (

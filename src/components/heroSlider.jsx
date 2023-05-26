@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "../styles.css"
-// import SwiperCard from './swiperCard'
 import HeroSwiperCard from './heroSwiperCard';
 
 
@@ -11,12 +10,12 @@ const HeroSlider = () => {
 
     const [movies, setMovies] = useState("")
 
-    const fetchingMovies = async (endpoint) => {
-        const res = await fetch(`${api_url}movie/${endpoint}?api_key=${api_key}`)
-        const data = await res.json()
-        setMovies(data)
-    }
     useEffect(() => {
+        const fetchingMovies = async (endpoint) => {
+            const res = await fetch(`${api_url}movie/${endpoint}?api_key=${api_key}`)
+            const data = await res.json()
+            setMovies(data)
+        }
         fetchingMovies("upcoming")
     }, [])
 

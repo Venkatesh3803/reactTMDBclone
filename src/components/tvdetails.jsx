@@ -9,12 +9,12 @@ const Tvdetails = () => {
 
     const [tv, setTv] = useState("")
 
-    const fetchingMovies = async (endpoint) => {
-        const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}`)
-        const data = await res.json()
-        setTv(data)
-    }
     useEffect(() => {
+        const fetchingMovies = async (endpoint) => {
+            const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}`)
+            const data = await res.json()
+            setTv(data)
+        }
         fetchingMovies(`tv/${id}`)
     }, [id])
 
@@ -73,13 +73,13 @@ const Tvdetails = () => {
                     <hr />
                     <div className="">
                         <h3>NetWorks:- </h3>
-                        <div style={{ display: "flex", gap: "10px",alignItems:"center" }}>
-                                {tv?.networks?.map(n => {
-                                    return (
-                                        <img style={{width:"12%",backgroundColor:"white",padding:"12px" , borderRadius:"10px"}} key={n.id} src={`https://image.tmdb.org/t/p/w500${n?.logo_path}`} alt="" />
-                                    )
-                                })}
-                            </div>
+                        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                            {tv?.networks?.map(n => {
+                                return (
+                                    <img style={{ width: "12%", backgroundColor: "white", padding: "12px", borderRadius: "10px" }} key={n.id} src={`https://image.tmdb.org/t/p/w500${n?.logo_path}`} alt="" />
+                                )
+                            })}
+                        </div>
                     </div>
                     <hr />
                     <div className="">
