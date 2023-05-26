@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import TvPage from "./pages/tvPage";
 import TvdetailsPage from "./pages/tvdetailsPage";
 import MoviedetailsPage from "./pages/moviedetailsPage";
+import Search from "./pages/searchpage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/tv-shows" element={<TvPage />} />
         <Route path="/tv-details" element={<TvdetailsPage />} />
         <Route path="/movie-details" element={<MoviedetailsPage />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
 
     </div>

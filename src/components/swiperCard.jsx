@@ -5,7 +5,7 @@ import 'swiper/css/autoplay';
 import { Autoplay, FreeMode, } from 'swiper';
 import { AiFillStar } from "react-icons/ai"
 import { Link } from 'react-router-dom';
-
+import noImage from "../images/No_Image_Available.jpg"
 
 
 const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
@@ -22,9 +22,9 @@ const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
                     return (
                         <SwiperSlide key={item.id}>
                             <Link to={`/movie-details?id=${item.id}`}>
-                                <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
+                                {item.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" /> : <img src={noImage} alt="" />}
                             </Link>
-                            <div className="info">
+                            {/* <div className="info">
                                 <h3>{item.title}</h3>
                                 <div className="rating">
                                     <h3>Rating: </h3>
@@ -32,7 +32,7 @@ const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
                                     <p>{item.vote_average}</p>
                                 </div>
                                 <p>Lang :{item.original_language}</p>
-                            </div>
+                            </div> */}
                         </SwiperSlide>
                     )
                 })}
@@ -50,9 +50,9 @@ const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
                         return (
                             <SwiperSlide key={item.id}>
                                 <Link to={`/tv-details?id=${item.id}`}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
+                                    {item.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" /> : <img src={noImage} alt="" />}
                                 </Link>
-                                <div className="info">
+                                {/* <div className="info">
                                     <h3>{item.name}</h3>
                                     <div className="rating">
                                         <h3>Rating: </h3>
@@ -60,7 +60,7 @@ const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
                                         <p>{item.vote_average}</p>
                                     </div>
                                     <p>Lang :{item.original_language}</p>
-                                </div>
+                                </div> */}
                             </SwiperSlide>
                         )
                     })}

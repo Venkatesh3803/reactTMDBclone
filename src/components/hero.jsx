@@ -2,22 +2,40 @@
 import { AiFillStar } from "react-icons/ai"
 import { BsFillPlayFill } from "react-icons/bs"
 import HeroSlider from './heroSlider'
+import { useEffect, useState } from "react"
+import noImage from "../images/No_Image_Available.jpg"
+
 
 const Hero = () => {
-  
+
+    const id = (window.location.search.split("=")[1])
+    const api_key = "e31671c359169ad6021c28eb5db767a1";
+    const api_url = "https://api.themoviedb.org/3/"
+    let defaultId = 667538
+
+    const [movie, setMovie] = useState("")
+
+    const fetchingMovies = async (endpoint) => {
+        const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}`)
+        const data = await res.json()
+        setMovie(data)
+    }
+    useEffect(() => {
+        fetchingMovies(`movie/${id ? id : defaultId}`)
+    }, [id])
     return (
         <div className='hero'>
             <div className="hero-container">
-                <img src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2020/11/Best-Movies-Netflix.png" alt="" />
+                {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" /> : <img src={noImage} alt="" />}
                 <div className="hero-info">
-                    <h2>title</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repellendus numquam aperiam nemo. Odit architecto cum deserunt soluta ullam, accusantium omnis? At, rerum quasi dignissimos commodi id blanditiis iusto nostrum!</p>
+                    <h2>{movie.title}</h2>
+                    <p>{movie.overview}</p>
                     <div className="rating">
                         <h4>Rating :</h4>
                         <AiFillStar color='gold' size={"22"} />
-                        <span>5</span>
+                        <span>{movie.vote_average}</span>
                     </div>
-                    <p>Date OF Release : 12/1/2023</p>
+                    <p>Date OF Release : {movie.release_date}</p>
                     <button>WATCH NOW <BsFillPlayFill size={"22"} /></button>
                 </div>
                 <HeroSlider />
