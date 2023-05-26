@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Autoplay, FreeMode, } from 'swiper';
-import { AiFillStar } from "react-icons/ai"
 import { Link } from 'react-router-dom';
 import noImage from "../images/No_Image_Available.jpg"
 
