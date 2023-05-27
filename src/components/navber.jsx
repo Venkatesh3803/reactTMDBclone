@@ -8,10 +8,8 @@ const Navber = () => {
 
     const [search, setSearch] = useState("")
     const [type, setType] = useState("movie")
-    // const [active, setActive] = useState()
     const active = (window.location.pathname)
-    console.log(active)
-    console.log(search)
+
     return (
         <div className='navber'>
             <div className="nav-container">
@@ -32,7 +30,10 @@ const Navber = () => {
                             <Link to={"/tv-shows"} style={{ textDecoration: "none", color: "white" }}>
                                 <li className={active === "/tv-shows" ? "active" : ""}>Tv Shows</li>
                             </Link>
-                            <li className={active === "/upcoming" ? "active" : ""}>Up Coming</li>
+                            <Link to={"/up-coming"} style={{ textDecoration: "none", color: "white" }}>
+                                <li className={active === "/up-coming" ? "active" : ""}>Up Coming</li>
+                            </Link>
+
                         </ul>
                     </div>
                 </div>

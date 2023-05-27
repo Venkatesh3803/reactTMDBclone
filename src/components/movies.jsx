@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from './card'
 
-const Movies = () => {
-    
+const Movies = ({ upComing, topRated }) => {
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
 
@@ -14,11 +13,11 @@ const Movies = () => {
             const data = await res.json()
             setMovies(data)
         }
-        fetchingMovies("movie/top_rated")
-    }, [])
+        fetchingMovies(upComing ? `movie/${upComing}` : `movie/${topRated}`)
+    }, [upComing, topRated])
     return (
         <div className='popular-movies'>
-            <h1>Movies</h1>
+            <h1>{upComing ? upComing : "Movies"}</h1>
             <div className="movies-container">
                 {movies?.results?.map((mov) => {
                     return <Card key={mov.id} movie={mov} />

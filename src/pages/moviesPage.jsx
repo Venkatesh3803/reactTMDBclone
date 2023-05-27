@@ -7,7 +7,7 @@ const MoviesPage = () => {
   return (
     <>
       <Navber />
-      <Movies />
+      <Movies topRated="top_rated" />
       <Footer />
     </>
   )
