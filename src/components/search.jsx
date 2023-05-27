@@ -4,14 +4,16 @@ import Card from './card'
 const SearchBar = () => {
     const url = window.location.search
     let paramsKey = new URLSearchParams(url)
+
+    const [movies, setMovies] = useState("")
+    // const [searchTerm, setSearchTerm] = useState(paramsKey.get("search-term"))
+    // const [searchType, setSearchType] = useState(paramsKey.get("type"))
+
     const searchTerm = (paramsKey.get("search-term"))
     const searchType = (paramsKey.get("type"))
 
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
-
-    const [movies, setMovies] = useState("")
-
 
 
     useEffect(() => {

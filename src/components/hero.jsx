@@ -24,6 +24,8 @@ const Hero = () => {
         }
         fetchingMovies(`movie/${id ? id : defaultId}`)
     }, [id, defaultId])
+
+
     return (
         <div className='hero'>
             <div className="hero-container">
