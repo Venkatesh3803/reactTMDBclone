@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../styles.css"
 import { AiOutlineSearch } from "react-icons/ai"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Navber = () => {
@@ -9,6 +9,17 @@ const Navber = () => {
     const [search, setSearch] = useState("")
     const [type, setType] = useState("movie")
     const active = (window.location.pathname)
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (search === "") {
+            alert("please enter movie name")
+        }
+        navigate(`../search?type=${type}&search-term=${search}`)
+    }
+
+
 
     return (
         <div className='navber'>
@@ -52,12 +63,10 @@ const Navber = () => {
 
 
 
-                    <div className="search">
+                    <form onSubmit={handleSubmit} className="search">
                         <input type="text" placeholder='Search here...' onChange={(e) => setSearch(e.target.value)} />
-                        <Link to={`../search?type=${type}&search-term=${search}`}>
-                            <AiOutlineSearch className='search-icon' />
-                        </Link>
-                    </div>
+                        <button style={{ backgroundColor: "transparent", padding: "0" }} type='submit'><AiOutlineSearch /></button>
+                    </form>
 
                 </div>
             </div>
