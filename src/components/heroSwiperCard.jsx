@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 import noImage from "../images/No_Image_Available.jpg"
 
 
-const HeroSwiperCard = ({ noOfCards, delay, movies }) => {
+const HeroSwiperCard = ({ noOfCards, delay, movies, }) => {
     return (
         <div>
             <Swiper
                 modules={[Autoplay, FreeMode]}
                 spaceBetween={10}
                 slidesPerView={noOfCards}
-                autoplay={{ delay: delay }}
+                autoplay={{ delay: delay, disableOnInteraction: true }}
                 freeMode={true}
             >
                 {movies?.results?.map((item) => {

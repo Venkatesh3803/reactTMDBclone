@@ -27,7 +27,7 @@ const Hero = () => {
     return (
         <div className='hero'>
             <div className="hero-container">
-                {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" /> : <img src={noImage} alt={movie.title} />}
+                {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`} alt="" /> : <img src={noImage} alt={movie.title} />}
                 <div className="hero-info">
                     <h2>{movie.title}</h2>
                     <p>{movie.overview}</p>
