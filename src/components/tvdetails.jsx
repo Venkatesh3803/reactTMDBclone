@@ -7,7 +7,7 @@ const Tvdetails = () => {
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
 
-    const [tv, setTv] = useState("")
+    const [tv, setTv] = useState()
 
     useEffect(() => {
         const fetchingMovies = async (endpoint) => {
@@ -17,8 +17,6 @@ const Tvdetails = () => {
         }
         fetchingMovies(`tv/${id}`)
     }, [id])
-
-    console.log(tv)
 
     return (
         <div className='movie-details'>
@@ -33,16 +31,16 @@ const Tvdetails = () => {
                 </div>
                 <div className="movie-details-right">
                     <div className="details-info">
-                        <h1>{tv.name}</h1>
-                        <p>{tv.overview?.slice(0, 320)}</p>
-                        <p>Started On :{tv.first_air_date
+                        <h1>{tv?.name}</h1>
+                        <p>{tv?.overview?.slice(0, 320)}</p>
+                        <p>Started On :{tv?.first_air_date
                         }</p>
                         <div className="rating">
                             <h3>Rating: </h3>
                             <AiFillStar color='gold' size={"22"} />
-                            <p>{tv.vote_average}</p>
+                            <p>{tv?.vote_average}</p>
                         </div>
-                        <p>No of Episodes :{tv.number_of_episodes}</p>
+                        <p>No of Episodes :{tv?.number_of_episodes}</p>
                         <p style={{ display: "flex", gap: "12px" }}>Genres : {tv?.genres?.map(g => {
                             return <li style={{ listStyle: "none" }} key={g.id}>{g.name}</li>
                         })}</p>
@@ -55,7 +53,7 @@ const Tvdetails = () => {
                 <div className="border">
                     <div className="">
                         <h3>TagLine : </h3>
-                        <p>{tv.tagline}</p>
+                        <p>{tv?.tagline}</p>
                     </div>
                     <hr />
                     <div className="production-details">
@@ -84,7 +82,7 @@ const Tvdetails = () => {
                     <hr />
                     <div className="">
                         <h3>Revenue Generated : </h3>
-                        <p>${tv.revenue}</p>
+                        <p>${tv?.revenue}</p>
                     </div>
                 </div>
             </div>

@@ -52,11 +52,11 @@ const Navber = () => {
 
                     <div className="search">
                         <div className="radio">
-                            <input onClick={(e) => setType(e.target.value)} type="radio" value='tv' name='movie' />
+                            <input onClick={(e) => setType(e.currentTarget.value)} type="radio" value='tv' name='movie' />
                             <label>tv</label>
                         </div>
                         <div className="radio">
-                            <input onClick={(e) => setType(e.target.value)} type="radio" value='movie' name='movie' />
+                            <input onClick={(e) => setType(e.currentTarget.value)} type="radio" value='movie' name='movie' />
                             <label>Movies</label>
                         </div>
                     </div>
