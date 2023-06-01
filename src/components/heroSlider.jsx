@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../styles.css"
-import HeroSwiperCard from './heroSwiperCard';
+import SwiperCard from './swiperCard';
 
 
 
@@ -21,7 +21,7 @@ const HeroSlider = () => {
 
     return (
         <div className='hero-slider'>
-            <HeroSwiperCard movies={movies} noOfCards={3} delay={2000} />
+            <SwiperCard movies={movies} noOfCards={3} delay={2000} heroSlider />
         </div >
     )
 }

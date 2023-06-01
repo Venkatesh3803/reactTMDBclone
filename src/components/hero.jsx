@@ -1,20 +1,23 @@
-// import React, { useEffect, useState } from 'react'
+
 import { AiFillStar } from "react-icons/ai"
 import { BsFillPlayFill } from "react-icons/bs"
 import HeroSlider from './heroSlider'
 import { useEffect, useState } from "react"
 import noImage from "../images/No_Image_Available.jpg"
+import { useSearchParams } from "react-router-dom"
 
 
 const Hero = () => {
+    const [currentUrl] = useSearchParams()
+    const id = currentUrl.get("id")
+    const [movie, setMovie] = useState("")
 
-    const id = (window.location.search.split("=")[1])
+
     const api_key = "e31671c359169ad6021c28eb5db767a1";
     const api_url = "https://api.themoviedb.org/3/"
 
     let defaultId = 667538
 
-    const [movie, setMovie] = useState("")
 
     useEffect(() => {
         const fetchingMovies = async (endpoint) => {
@@ -24,6 +27,7 @@ const Hero = () => {
         }
         fetchingMovies(`movie/${id ? id : defaultId}`)
     }, [id, defaultId])
+
 
 
     return (

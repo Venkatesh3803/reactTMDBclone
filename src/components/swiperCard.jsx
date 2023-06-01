@@ -8,24 +8,32 @@ import noImage from "../images/No_Image_Available.jpg"
 import { AiFillStar } from 'react-icons/ai';
 
 
-const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
+const SwiperCard = ({ noOfCards, delay, movies, tv, heroSlider }) => {
     return (
         <div>
             {movies ? <Swiper
                 modules={[Autoplay, FreeMode]}
                 spaceBetween={10}
                 slidesPerView={noOfCards}
-                autoplay={{ delay: delay }}
+                autoplay={{ delay: delay, disableOnInteraction: false }}
                 freeMode={true}
+                // breakpointsBase={
+                //     1250 = {
+                //         slidesPerView: 2
+                //     },
+                //     750 = {
+                //         slidesPerView: 1
+                //     },
+
+                // }
             >
                 {movies?.results?.map((item) => {
                     return (
                         <SwiperSlide key={item.id}>
-                            <Link to={`/movie-details?id=${item.id}`} style={{ textDecoration: "none", color: "white" }}>
+                            <Link to={heroSlider ? `?id=${item.id}` : `/movie-details?id=${item.id}`} style={{ textDecoration: "none", color: "white" }}>
                                 {item.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" /> : <img src={noImage} alt="" />}
                                 <div className="card-info">
                                     <h1>{item.title}</h1>
-                                    {/* <p></p> */}
                                     <div className="rating">
                                         <h3>Rating:-</h3>
                                         <AiFillStar color='gold' size={"22"} />
@@ -66,7 +74,7 @@ const SwiperCard = ({ noOfCards, delay, movies, tv }) => {
                     })}
                 </Swiper>
             }
-        </div>
+        </div >
     )
 }
 

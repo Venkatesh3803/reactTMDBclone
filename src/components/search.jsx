@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Card from './card'
+import { useSearchParams } from 'react-router-dom'
+
 
 const SearchBar = () => {
-    const url = window.location.search
-    let paramsKey = new URLSearchParams(url)
+    let [paramsKey] = useSearchParams()
 
     const [movies, setMovies] = useState("")
-    // const [searchTerm, setSearchTerm] = useState(paramsKey.get("search-term"))
-    // const [searchType, setSearchType] = useState(paramsKey.get("type"))
 
     const searchTerm = (paramsKey.get("search-term"))
     const searchType = (paramsKey.get("type"))
